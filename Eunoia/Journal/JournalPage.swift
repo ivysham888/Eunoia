@@ -24,16 +24,14 @@ struct JournalPage: View {
                 Rectangle()
                     .fill(Color.tanbackground)
                     .ignoresSafeArea()
+            
                 
-                
-                
-                // scroll view
-                ScrollView {
                     
                     VStack {
                         
+                        
+                        // HEADING + PLUS BUTTON
                         HStack {
-                            
                             Text("Journal")
                                 .fontWeight(.bold)
                                 .foregroundStyle(Color.brown1)
@@ -46,17 +44,24 @@ struct JournalPage: View {
                             } label: {
                                 Text("+")
                                     .fontWeight(.bold)
-                                    .font(.system(size: 30))
-                                    
+                                    .font(.system(size: 40))
+                                    .foregroundStyle(Color.brown2)
+                                    .padding(.trailing, 5)
                             }
+                            
                         }
                         .padding()
                         
-                        
+                        ScrollView {
+                            
+                            
+                            
+                            
+                            
+                        }
+
                         
                     }
-                    
-                }
                 
             }
 //            .navigationTitle("Journal")
