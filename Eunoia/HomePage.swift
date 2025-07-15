@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomePage: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Rectangle()
                     .fill(Color.tanbackground)
@@ -30,6 +30,7 @@ struct HomePage: View {
                     
                     NavigationLink(destination: AboutPage()) {
                         Text("About Eunoia")
+                            .frame(width: 180, height: 25)
                             .fontWeight(.bold)
                             .foregroundStyle(Color.white)
                             .font(.system(size: 20))
@@ -41,6 +42,7 @@ struct HomePage: View {
                     
                     NavigationLink(destination: PhysicalPage()) {
                         Text("Physical Health")
+                            .frame(width: 180, height: 25)
                             .fontWeight(.bold)
                             .foregroundStyle(Color.white)
                             .font(.system(size: 20))
@@ -52,6 +54,7 @@ struct HomePage: View {
                     
                     NavigationLink(destination: MentalPage()) {
                         Text("Mental Health")
+                            .frame(width: 180, height: 25)
                             .fontWeight(.bold)
                             .foregroundStyle(Color.white)
                             .font(.system(size: 20))
@@ -63,6 +66,7 @@ struct HomePage: View {
                     
                     NavigationLink(destination: JournalPage()) {
                         Text("Journal Your Day")
+                            .frame(width: 180, height: 25)
                             .fontWeight(.bold)
                             .foregroundStyle(Color.white)
                             .font(.system(size: 20))
@@ -72,10 +76,11 @@ struct HomePage: View {
                     }
                     
 
-                    
+        
                     
                 }
             }
+
 
         }
 
