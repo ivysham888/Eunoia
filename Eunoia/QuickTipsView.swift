@@ -10,6 +10,7 @@ import SwiftUI
 struct QuickTipsView: View {
     var body: some View {
         ZStack {
+
             Color("tanbackground")
                 .ignoresSafeArea()
             
@@ -36,6 +37,9 @@ struct QuickTipsView: View {
                 }
                 .padding()
             }
+
+            
+
         }
     }
 }
