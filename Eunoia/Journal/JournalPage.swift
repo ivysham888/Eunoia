@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import SwiftData
+
 
 struct JournalPage: View {
 //    init() {
@@ -15,8 +17,13 @@ struct JournalPage: View {
 //
 //        UINavigationBar.appearance().standardAppearance = appearance
 //    }
+    
+    @State private var showAddPage = false
+    @Query var entries: [EntryClass]
+    @Environment(\.modelContext) var modelContext
 
     var body: some View {
+        
         NavigationStack {
             ZStack {
                 
@@ -40,7 +47,9 @@ struct JournalPage: View {
                             Spacer()
                             
                             Button {
-                                
+                                withAnimation {
+                                    showAddPage = true
+                                }
                             } label: {
                                 Text("+")
                                     .fontWeight(.bold)
@@ -52,19 +61,34 @@ struct JournalPage: View {
                         }
                         .padding()
                         
-                        ScrollView {
+                        Spacer()
+                        
+                        
+    
+                            
+                            List {
+                                
+                                ForEach(entries) { entry in
+                                        Text(entry.entryContent)
+                                    
+                                   
+                                }
+                            }
                             
                             
-                            
-                            
-                            
-                        }
+                        
 
                         
                     }
                 
             }
 //            .navigationTitle("Journal")
+            
+            
+        }
+        
+        if showAddPage {
+            JournalAddView(showAddPage: $showAddPage, entry: EntryClass(entryContent: "", entryDate: Date.now))
         }
 
     }
@@ -72,4 +96,5 @@ struct JournalPage: View {
 
 #Preview {
     JournalPage()
+        .modelContainer(for: EntryClass.self, inMemory: true)
 }

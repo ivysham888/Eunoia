@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct JournalAddView: View {
+    @Binding var showAddPage: Bool
+    @Bindable var entry: EntryClass
+    @Environment(\.modelContext) var modelContext
+    
     var body: some View {
             
             VStack {
@@ -19,14 +24,14 @@ struct JournalAddView: View {
                     
                     Spacer()
                     
-                    DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/, label: { })
+                    DatePicker(selection: $entry.entryDate, label: { })
                         .accentColor(.bluegreen1)
                     
                     
                 }
                 .padding()
                 
-                TextField("How are you feeling?", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/, axis: .vertical)
+                TextField("How are you feeling?", text: $entry.entryContent, axis: .vertical)
                     .multilineTextAlignment(.leading)
                     .lineLimit(5...10)
                     .padding()
@@ -36,7 +41,9 @@ struct JournalAddView: View {
                     .padding(.trailing,15)
                 
                 Button {
-                    
+                    addEntry()
+                    showAddPage = false
+
                 } label: {
                     Text("Save")
                         .padding()
@@ -44,17 +51,23 @@ struct JournalAddView: View {
                         .frame(width: 100)
                         .foregroundStyle(Color.white)
                         .background(Color.brown2.clipShape(.rect(cornerRadius: 15)))
-
+                    
                     
                 }
-                    
-
+                
+                
             }
             
             
     }
+    
+    func addEntry() {
+        let entered = EntryClass(entryContent: entry.entryContent, entryDate: entry.entryDate)
+        modelContext.insert(entered)
+    }
 }
 
 #Preview {
-    JournalAddView()
+    JournalAddView(showAddPage: .constant(false), entry: EntryClass(entryContent: "", entryDate: Date.now))
+        
 }
