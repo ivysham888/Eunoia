@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct EunoiaApp: App {
     var body: some Scene {
         WindowGroup {
             HomePage()
+                .modelContainer(for: Workout.self)
         }
     }
 }
