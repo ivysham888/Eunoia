@@ -42,6 +42,10 @@ struct AboutPage: View {
                                            .fontWeight(.black)
                                            .foregroundColor(Color("brown1"))
                                            .padding(.bottom, 5)
+                    Text("I'm passionate about mental health and it's growing importance among our society. I hope this app serves as a support for people experiencing high stress and helps them rewind after a long day.")
+                        .font(.body)
+                        .foregroundColor(Color("brown1"))
+                        .padding(.bottom, 5)
 
                                        Image("Oranges")
                                            .resizable()
@@ -55,7 +59,11 @@ struct AboutPage: View {
                                            .fontWeight(.black)
                                            .foregroundColor(Color("brown1"))
                                            .padding(.bottom, 5)
-
+                    Text("I'm passionate about all things health and how it impacts us. Through this app, I hope you find the beauty and importance of health!")
+                                           .font(.body)
+                                           .foregroundColor(Color("brown1"))
+                                           .padding(.bottom, 5)
+                    
                                        Image("Lemons")
                                            .resizable()
                                            .aspectRatio(contentMode: .fill)
@@ -68,7 +76,7 @@ struct AboutPage: View {
                         .fontWeight(.black)
                         .foregroundColor(Color("brown1"))
                         .padding(.bottom, 5)
-                    Text("I am passionate about physical health and nature's joy, I invite you to explore this path to well-being through our app!")
+                    Text("I am passionate about physical health and nature's joy, I invite you to explore this path to well-being through this app!")
                                            .font(.body)
                                            .foregroundColor(Color("brown1"))
                                            .padding(.bottom, 5)
@@ -123,6 +131,14 @@ struct AboutPage: View {
                         .foregroundColor(Color("brown1"))
                         //.padding(.horizontal, 19.0)
                         
+                    Text("Using breathing apps to help regulate your breathing can help calm your mind and reduce stress.")
+                        .foregroundColor(Color("brown1"))
+                        .padding(.top, 15.0)
+            
+                    Link("Learn More", destination: URL(string: "example.url")!)
+                        .foregroundColor(Color("brown1"))
+                        .fontWeight(.bold)
+                    //Yes, I know it's there twice. It was mainly just a filler. 
                     Text("Using breathing apps to help regulate your breathing can help calm your mind and reduce stress.")
                         .foregroundColor(Color("brown1"))
                         .padding(.top, 15.0)
