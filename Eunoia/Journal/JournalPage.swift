@@ -17,6 +17,7 @@ struct JournalPage: View {
   @State private var showAddPage = false
   @Query(sort: \EntryClass.entryDate, order: .reverse) var entries: [EntryClass]
   @Environment(\.modelContext) var modelContext
+    
   var body: some View {
     NavigationStack {
       ZStack {
