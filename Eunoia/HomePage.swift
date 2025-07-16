@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct HomePage: View {
     var body: some View {
@@ -65,7 +64,7 @@ struct HomePage: View {
                     }
                     
                     
-                    NavigationLink(destination: JournalPage().modelContainer(for: EntryClass.self, inMemory: true)) {
+                    NavigationLink(destination: JournalPage()) {
                         Text("Journal Your Day")
                             .frame(width: 180, height: 25)
                             .fontWeight(.bold)
