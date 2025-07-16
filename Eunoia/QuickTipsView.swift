@@ -9,7 +9,9 @@ import SwiftUI
 
 struct QuickTipsView: View {
     var body: some View {
-        ZStack
+        ZStack {
+            
+        }
     }
 }
 
