@@ -34,6 +34,8 @@ struct PhysicalPage: View {
                     .multilineTextAlignment(.center)
                     .padding(.vertical, 12.0)
                 
+                Text("Select one:")
+                
                 HStack {
                     NavigationLink(destination: AboutPage()) {
                         Text("Cardio")
