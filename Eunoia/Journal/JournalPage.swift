@@ -19,7 +19,7 @@ struct JournalPage: View {
 //    }
     
     @State private var showAddPage = false
-    @Query var entries: [EntryClass]
+    @Query(sort: \EntryClass.entryDate, order: .reverse) var entries: [EntryClass]
     @Environment(\.modelContext) var modelContext
 
     var body: some View {
@@ -62,22 +62,53 @@ struct JournalPage: View {
                         .padding()
                         
                         Spacer()
-                        
-                        
-    
+                            
                             
                             List {
                                 
                                 ForEach(entries) { entry in
-                                        Text(entry.entryContent)
                                     
-                                   
+                                    ReferenceView(
+                                        thumbnail: ThumbnailView {
+                                            HStack {
+                                                VStack(alignment: .leading, spacing: 5) {
+                                                    Text(entry.entryDate, format: .dateTime)
+                                                }
+                                            }
+                                            .padding()
+                                        },
+                                        
+                                        expanded: ExpandedView {
+                                            HStack {
+                                                VStack {
+                                                    Text(entry.entryDate, format: .dateTime)
+                                                    Text(entry.entryContent)
+                                                    }
+                                                }
+                                            .padding()
+                                        }
+                                    )
+                                    
+                                    
+                                    
+                                    
+                                    
+//                                    HStack {
+//                                        Text(entry.entryContent)
+//                                        Spacer()
+//                                        Text(entry.entryDate, format: .dateTime)
+//                                        
+//                                    }
+                                    
+                                    
                                 }
+                                .listRowBackground(Color.clear)
                             }
-                            
-                            
-                        
 
+                            .scrollContentBackground(.hidden) // iOS 16+ to hide default background
+
+                        
+                    
                         
                     }
                 
