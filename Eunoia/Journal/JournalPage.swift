@@ -73,6 +73,7 @@ struct JournalPage: View {
                                             HStack {
                                                 VStack(alignment: .leading, spacing: 5) {
                                                     Text(entry.entryDate, format: .dateTime)
+                                                        .fontWeight(.bold)
                                                 }
                                             }
                                             .padding()
