@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct MentalHealthView: View {
+struct MentalPage: View {
     @Environment(\.modelContext) private var context
     @Query private var moods: [Mood]
 
