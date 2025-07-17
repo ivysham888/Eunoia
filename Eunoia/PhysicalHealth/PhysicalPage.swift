@@ -95,9 +95,11 @@ struct PhysicalPage: View {
                     }
                 }
                 .padding()
-
-                Spacer()
-
+                
+                .sheet(isPresented: $showNewWorkoutSheet) {
+                    NewAddWorkoutView(showNewWorkout: $showNewWorkoutSheet, workout: Workout(title: "", isImportant: false))
+                }
+                
                 List {
                     ForEach(workouts) { workoutItem in
                         HStack {
