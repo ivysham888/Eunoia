@@ -1,3 +1,4 @@
+//
 //  JournalAddView.swift
 //  Eunoia
 //

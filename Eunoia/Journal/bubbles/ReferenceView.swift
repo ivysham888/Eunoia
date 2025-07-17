@@ -43,7 +43,7 @@ struct ReferenceView: View {
                 .matchedGeometryEffect(id: "view", in: namespace)
         }
         .background(
-            Color.bluegreen1
+            Color.blue1
                 .matchedGeometryEffect(id: "background", in: namespace)
         )
         .mask {
@@ -59,7 +59,7 @@ struct ReferenceView: View {
             expanded
                 .matchedGeometryEffect(id: "view", in: namespace)
                 .background(
-                    Color.bluegreen1
+                    Color.blue1
                         .matchedGeometryEffect(id: "background", in: namespace)
                 )
                 .mask {
