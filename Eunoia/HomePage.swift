@@ -52,7 +52,7 @@ struct HomePage: View {
                     }
                     
                     
-                    NavigationLink(destination: MentalPage()) {
+                    NavigationLink(destination: MentalPage()        .modelContainer(for: Mood.self)) {
                         Text("Mental Health")
                             .frame(width: 180, height: 25)
                             .fontWeight(.bold)
@@ -93,5 +93,4 @@ struct HomePage: View {
 
 #Preview {
     HomePage()
-        .modelContainer(for: Mood.self, inMemory: true)
 }
