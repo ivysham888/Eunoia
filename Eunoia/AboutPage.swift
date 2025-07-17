@@ -122,33 +122,6 @@ struct AboutPage: View {
                         .padding(.bottom, 20)
                     
                     
-                    Text("Resources")
-                        .font(.title)
-                        .fontWeight(.black)
-                        .foregroundColor(Color("brown1"))
-                        .padding(.top)
-                    Text("Find resources to inspire, motivate, and support your journey to well-being.")
-                        .foregroundColor(Color("brown1"))
-                        //.padding(.horizontal, 19.0)
-                        
-                    Text("Using breathing apps to help regulate your breathing can help calm your mind and reduce stress.")
-                        .foregroundColor(Color("brown1"))
-                        .padding(.top, 15.0)
-            
-                    Link("Learn More", destination: URL(string: "example.url")!)
-                        .foregroundColor(Color("brown1"))
-                        .fontWeight(.bold)
-                    //Yes, I know it's there twice. It was mainly just a filler. 
-                    Text("Using breathing apps to help regulate your breathing can help calm your mind and reduce stress.")
-                        .foregroundColor(Color("brown1"))
-                        .padding(.top, 15.0)
-            
-                    Link("Learn More", destination: URL(string: "example.url")!)
-                        .foregroundColor(Color("brown1"))
-                        .fontWeight(.bold)
-
-                            
-                    
                     Link("Image Source", destination: URL(string: "https://www.pexels.com/")!)
                         .foregroundColor(Color("brown1"))
                         .fontWeight(.bold)
