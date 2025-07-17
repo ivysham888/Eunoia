@@ -101,7 +101,6 @@ struct MentalPage: View {
                     .padding()
                 }
             }
-            .navigationTitle("Mental Health")
             .navigationBarTitleDisplayMode(.inline)
             .onAppear(perform: loadTodayMood)
             .onChange(of: scenePhase) { oldPhase, newPhase in
