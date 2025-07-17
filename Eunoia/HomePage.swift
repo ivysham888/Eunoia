@@ -40,7 +40,8 @@ struct HomePage: View {
                     }
                     .padding(.top, 20)
                     
-                    NavigationLink(destination: PhysicalPage()) {
+                    NavigationLink(destination: PhysicalPage()
+                        .modelContainer(for: Workout.self, inMemory: true)) {
                         Text("Physical Health")
                             .frame(width: 180, height: 25)
                             .fontWeight(.bold)
