@@ -24,7 +24,7 @@ struct AboutPage: View {
                     Text("Take care of your body. It's the only place you have to live. - Jim Rohn")
                         .font(.title2)
                         .fontWeight(.thin)
-                        .foregroundColor(Color("green1"))
+                        .foregroundColor(Color("bluegreen1"))
                         .multilineTextAlignment(.center)
                         .padding()
                     

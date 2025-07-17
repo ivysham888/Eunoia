@@ -32,6 +32,7 @@ struct NewAddWorkoutView: View {
                     .fontWeight(.semibold)
                     .foregroundColor(Color("brown1"))
                 
+                
                 TextField("Enter the workout description...", text: $workout.title, axis: .vertical)
                     .padding()
                     .background(Color(.systemGroupedBackground))
