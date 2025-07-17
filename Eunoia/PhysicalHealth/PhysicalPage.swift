@@ -11,7 +11,7 @@ import SwiftData
 struct PhysicalPage: View {
     
     @Environment(\.modelContext) var modelContext
-
+   
     @State private var showNewWorkoutSheet = false
     @Query var workouts: [Workout]
 
