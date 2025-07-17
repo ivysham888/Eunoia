@@ -12,9 +12,10 @@ struct MentalPage: View {
     @Environment(\.modelContext) private var context
     @Query private var moods: [Mood]
 
-    let emojis = ["😊", "😐", "😢", "😡", "😫"]
+    @Environment(\.scenePhase) private var scenePhase
 
-    @State private var selectedEmoji: String? = nil // ✅ Add local state
+    let emojis = ["😊", "😐", "😢", "😡", "😫"]
+    @State private var selectedEmoji: String? = nil
 
     var body: some View {
         NavigationView {
@@ -24,13 +25,11 @@ struct MentalPage: View {
 
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
-                        // Title
                         Text("Mental\nHealth")
                             .font(.largeTitle)
                             .bold()
                             .foregroundColor(.brown)
-
-                        // Mood prompt and calendar
+                        //emoji picker
                         HStack {
                             Text("How are you feeling today?")
                                 .font(.headline)
@@ -38,41 +37,34 @@ struct MentalPage: View {
                             Spacer()
                             NavigationLink(destination: MoodCalendarView()) {
                                 Image(systemName: "calendar")
+                                    .foregroundColor(.brown)
                             }
                         }
 
-                        // Emoji mood picker
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 5)) {
                             ForEach(emojis, id: \.self) { emoji in
-                                Button(action: {
-                                    selectedEmoji = emoji
-                                    addMood(for: Date(), emoji: emoji)
-                                }) {
+                                Button {
+                                    saveMood(for: Date(), emoji: emoji)
+                                } label: {
                                     Text(emoji)
                                         .font(.largeTitle)
                                         .padding()
-                                        .background(selectedEmoji == emoji ? Color("bluegreen1").opacity(0.2) : Color.clear)
+                                        .background(selectedEmoji == emoji ? Color("bluegreen1").opacity(0.3) : Color.clear)
                                         .clipShape(Circle())
                                 }
                             }
                         }
 
-                        // Show today's mood
-                        if let emoji = selectedEmoji ?? moods.first(where: {
-                            Calendar.current.isDate($0.date, inSameDayAs: Date())
-                        })?.emoji {
+                        if let emoji = selectedEmoji {
                             Text("You chose: \(emoji)")
                                 .foregroundColor(.brown)
                                 .font(.title2)
                                 .bold()
-                                .padding(.top)
                         } else {
                             Text("No mood selected yet.")
                                 .foregroundColor(.gray)
-                                .padding(.top)
                         }
-
-                        // Daily quote
+//qoute
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color("bluegreen1"))
                             .frame(height: 100)
@@ -80,10 +72,10 @@ struct MentalPage: View {
                                 Text(getDailyQuote())
                                     .foregroundColor(.white)
                                     .multilineTextAlignment(.center)
+                                    .bold()
                                     .padding()
                             )
-
-                        // Breathing Exercises
+//breathing exercise
                         NavigationLink(destination: BreathingExercisesView()) {
                             RoundedRectangle(cornerRadius: 20)
                                 .fill(Color("bluegreen1"))
@@ -94,8 +86,7 @@ struct MentalPage: View {
                                         .bold()
                                 )
                         }
-
-                        // Quick Tips
+//quick tips
                         NavigationLink(destination: QuickTipsView()) {
                             RoundedRectangle(cornerRadius: 20)
                                 .fill(Color("bluegreen1"))
@@ -112,18 +103,26 @@ struct MentalPage: View {
             }
             .navigationTitle("Mental Health")
             .navigationBarTitleDisplayMode(.inline)
-            .onAppear {
-                // Sync selected emoji with stored mood on load
-                if let mood = moods.first(where: {
-                    Calendar.current.isDate($0.date, inSameDayAs: Date())
-                }) {
-                    selectedEmoji = mood.emoji
+            .onAppear(perform: loadTodayMood)
+            .onChange(of: scenePhase) { oldPhase, newPhase in
+                if newPhase == .active {
+                    loadTodayMood()
                 }
             }
         }
     }
 
-    private func addMood(for date: Date, emoji: String) {
+    private func loadTodayMood() {
+        if let todayMood = moods.first(where: {
+            Calendar.current.isDate($0.date, inSameDayAs: Date())
+        }) {
+            selectedEmoji = todayMood.emoji
+        } else {
+            selectedEmoji = nil
+        }
+    }
+
+    private func saveMood(for date: Date, emoji: String) {
         if let existing = moods.first(where: {
             Calendar.current.isDate($0.date, inSameDayAs: date)
         }) {
@@ -135,8 +134,9 @@ struct MentalPage: View {
 
         do {
             try context.save()
+            selectedEmoji = emoji
         } catch {
-            print("❌ Error saving mood: \(error)")
+            print("❌ Failed to save mood: \(error)")
         }
     }
 
@@ -145,9 +145,16 @@ struct MentalPage: View {
             "The only way to do great work is to love what you do. – Steve Jobs",
             "You are stronger than you think.",
             "Breathe. You're doing great.",
-            "One day at a time. You’ve got this."
+            "One day at a time. You’ve got this.",
+            "You can't control the wind, but you can always control the sails",
+            "Fear kills more dreams than failure ever will"
         ]
         let day = Calendar.current.component(.day, from: Date())
         return quotes[day % quotes.count]
     }
+}
+
+#Preview {
+    MentalPage()
+        .modelContainer(for: Mood.self, inMemory: true)
 }

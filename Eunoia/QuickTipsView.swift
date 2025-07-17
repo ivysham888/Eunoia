@@ -19,7 +19,13 @@ struct QuickTipsView: View {
                     Text("Quick Tips For Mental Health")
                         .font(.largeTitle)
                         .bold()
-                        .padding(.bottom, 10)
+                        .foregroundColor(.brown)
+                        .padding(.horizontal)
+                        .padding(.top)
+                    
+                    Text("Want quick tips to help you manage your mental health? Here are some helpful suggestions:")
+                        .font(.headline)
+                        .padding(.horizontal)
                         .foregroundColor(.brown)
                     
                     TipView(emoji: "😟", title: "Feeling anxious?", advice: "Try 5-4-3-2-1 grounding.")
