@@ -14,6 +14,7 @@ struct EunoiaApp: App {
         WindowGroup {
             HomePage()
                 .modelContainer(for: Workout.self)
+                .modelContainer(for: Mood.self)
         }
     }
 }

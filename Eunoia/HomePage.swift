@@ -93,4 +93,5 @@ struct HomePage: View {
 
 #Preview {
     HomePage()
+        .modelContainer(for: Mood.self, inMemory: true)
 }
