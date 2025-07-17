@@ -64,7 +64,6 @@ struct BreathingExercisesView: View {
                 .foregroundColor(.brown)
             }
         }
-        .navigationTitle("Breathing")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -94,7 +93,6 @@ struct ExerciseDetailView: View {
                 .padding()
             }
         }
-        .navigationTitle(exercise.name)
         .foregroundColor(.brown)
         .navigationBarTitleDisplayMode(.inline)
     }
