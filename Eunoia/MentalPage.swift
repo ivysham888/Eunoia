@@ -35,7 +35,7 @@ struct MentalPage: View {
                                 .font(.headline)
                                 .foregroundColor(.brown)
                             Spacer()
-                            NavigationLink(destination: MoodCalendarView()) {
+                            NavigationLink(destination: MoodCalendarView()        .modelContainer(for: Mood.self)) {
                                 Image(systemName: "calendar")
                                     .foregroundColor(.brown)
                             }
@@ -156,5 +156,4 @@ struct MentalPage: View {
 
 #Preview {
     MentalPage()
-        .modelContainer(for: Mood.self, inMemory: true)
 }

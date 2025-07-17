@@ -169,6 +169,5 @@ struct MoodCalendarView: View {
 
 #Preview {
     MoodCalendarView()
-        .modelContainer(for: Mood.self, inMemory: true)
 }
 
