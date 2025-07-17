@@ -28,7 +28,6 @@ struct AboutPage: View {
                         .multilineTextAlignment(.center)
                         .padding()
                     
-                    Text("!!")
                     
                                       Image("Kiwi")
                                            .resizable()
