@@ -15,8 +15,7 @@ struct ToggleItem: Identifiable {
 struct NewAddWorkoutView: View {
     
     @Binding var showNewWorkout: Bool
-    @State private var toggle1 = false
-    @State private var toggle2 = false
+    @State private var selectedDate: Date = Date()
     @Bindable var workout: Workout
     @Environment(\.modelContext) var modelContext
     
@@ -38,6 +37,13 @@ struct NewAddWorkoutView: View {
                     .background(Color(.systemGroupedBackground))
                     .cornerRadius(15)
                     .padding()
+                
+                DatePicker(selection: $selectedDate, label: {
+                    Text("Select Date")
+                        .fontWeight(.semibold)
+                    .foregroundColor(Color("brown1"))})
+                .accentColor(.bluegreen1)               
+               
                 
                 
                 Button {

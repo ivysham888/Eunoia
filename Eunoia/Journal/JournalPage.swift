@@ -86,7 +86,7 @@ struct EntryThumbnail: View {
                 Text(entry.entryDate, format: .dateTime)
                     .fontWeight(.bold)
                     .font(.system(size: 27))
-                    .foregroundStyle(Color.brown3)
+                    .foregroundStyle(Color.brown1)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
